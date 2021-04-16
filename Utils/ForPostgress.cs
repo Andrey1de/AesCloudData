@@ -23,7 +23,7 @@ namespace AesCloudData.Utils
                 var host = arr[3];
                 var port = arr[4];
                 var database = arr[5];
-                string connect = $"host={host}; port={port}; database={database}; userid={userid}; password={password}";
+                string connect = $"host={host}; port={port}; database={database}; userid={userid}; password={password}; sslmode=require";
                 return connect;
             }
             catch (Exception ex)

@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="local.sqlite" />
     <None Remove="postgresContext.cs.old" />
   </ItemGroup>
 
