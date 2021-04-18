@@ -51,3 +51,25 @@ Using an Existing Database (Database-First)
 ## dotnet ef dbcontext scaffold "host=localhost;port=5432;database=postgres;userid=postgres;password=1q1q" Npgsql.EntityFrameworkCore.PostgreSQL
 
   PM>dotnet ef dbcontext scaffold "host=localhost;port=5432;database=clouddata;userid=postgres;password=1q1q" Npgsql.EntityFrameworkCore.PostgreSQL
+
+
+  yarn add  express-handlebars
+yarn add v1.22.5
+
+yarn add cors dotenv
+
+# Running bash on ? aes-cloud-data... up, run.3355 (Free)
+## ~ $ printenv
+DATABASE_URL=postgres://jpiugjjydtcoej:7867dbb5ee52caa47a8e71c211a8fc688a99360a931ff79bc0ff53567b978349@ec2-107-22-83-3.compute-1.amazonaws.com:5432/d59dgts7li116b
+ASPNETCORE_URLS=http://+:56483
+PWD=/app
+PORT=56483
+_=/usr/bin/printenv
+LINES=27
+HOME=/app
+COLUMNS=120
+IS_HEROKU=true
+SHLVL=1
+PS1=\[\033[01;34m\]\w\[\033[00m\] \[\033[01;32m\]$ \[\033[00m\]
+PATH=/usr/local/bin:/usr/bin:/bin
+DYNO=run.3355
