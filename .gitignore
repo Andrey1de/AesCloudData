@@ -5,14 +5,10 @@
 *.suo
 *.user
 *.userosscache
-*.map
-*.js
 *.sln.docstates
-#CurrencyToUSD.xml
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-*.sqlite
 
 # Build results
 [Dd]ebug/
