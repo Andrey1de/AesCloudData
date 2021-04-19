@@ -21,7 +21,7 @@ class RateToUsdServer {
         return __awaiter(this, void 0, void 0, function* () {
             let qret = yield PostgresDB_1.Srv.query('SELECT * FROM products ORDER BY code ASC');
             // res.status(200).json(qret.rows).end();
-            return qret.rows;
+            return []; //qret.rows;
         });
     }
     ;

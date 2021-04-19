@@ -29,6 +29,7 @@ exports.default = router;
 //	last_refreshed: new Date(),
 //	stored: new Date()
 //};
+const PostgresDB_1 = require("../database/PostgresDB");
 const MapRates = new Map();
 function delay(ms) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -36,23 +37,22 @@ function delay(ms) {
     });
 }
 //First read of Rates
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    //await delay(500);
-    try {
-        logger_1.default.info(`==>Begin retrieving info from RateToUsd table`);
-        const list = yield rateToUsd_service_1.Server.List();
-        list.forEach(p => MapRates.set(p.code, p));
-        logger_1.default.info(`==>End retrieving info from RateToUsd table : \n `
-            + JSON.stringify(list, null, 2));
-    }
-    catch (e) {
-        logger_1.default.error(e);
-    }
-    //TBD fill the hash
-    //let arr: Rate[] =  Mock.init(RATE_DB_DIR,RATE_DB_PATH, [RateUsd]);
-    //MapRates.set(RateUsd.code, RateUsd);
-    //arr?.forEach(rate => MapRates.set(rate.code, rate));
-}))();
+//(async () => {
+//	//await delay(500);
+//	try {
+//		Log.info(`==>Begin retrieving info from RateToUsd table`);
+//		const list = await Server.List();
+//		list.forEach(p => MapRates.set(p.code, p));
+//		Log.info(`==>End retrieving info from RateToUsd table : \n `
+//			+ JSON.stringify(list, null, 2));
+//	} catch (e) {
+//	   Log.error(e)
+//	}
+//	//TBD fill the hash
+//	//let arr: Rate[] =  Mock.init(RATE_DB_DIR,RATE_DB_PATH, [RateUsd]);
+//	//MapRates.set(RateUsd.code, RateUsd);
+//	//arr?.forEach(rate => MapRates.set(rate.code, rate));
+//})();
 function getCode(req, res) {
     var _a, _b;
     const code = ('' + (((_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.code) || ((_b = req === null || req === void 0 ? void 0 : req.query) === null || _b === void 0 ? void 0 : _b.code))).
@@ -67,7 +67,20 @@ function getCode(req, res) {
 }
 //ALL
 router.get(`/`, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.status(S.OK).json({ data: [...MapRates.values()] }).end();
+    //const arr = await Server.List();
+    //res.status(S.OK).json({data: arr }).end();
+    try {
+        PostgresDB_1.Srv.pool.connect().then(p => {
+            logger_1.default.info(p);
+        }).catch(e => {
+            logger_1.default.info(e);
+        });
+    }
+    catch (e) {
+        logger_1.default.error(e);
+    }
+    res.status(S.OK).end();
+    //res.status(S.OK).json({ data: [...MapRates.values()] }).end();
 }));
 //GET/:code
 router.get(`/get/:code`, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
